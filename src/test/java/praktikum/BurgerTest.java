@@ -104,7 +104,7 @@ public class BurgerTest {
         burger.addIngredient(ingredient);
         burger.addIngredient(ingredient2);
         burger.moveIngredient(0,1);
-        Assert.assertTrue(burger.ingredients.size() == 2);
+        Assert.assertEquals(2, burger.ingredients.size());
         Assert.assertEquals("chili sauce", burger.ingredients.get(1).getName());
     }
 
