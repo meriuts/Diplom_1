@@ -18,6 +18,7 @@ public class BurgerTest {
     Ingredient ingredient = Mockito.mock(Ingredient.class);
     Ingredient ingredient2 = Mockito.mock(Ingredient.class);
     Ingredient ingredient3 = Mockito.mock(Ingredient.class);
+    IngredientType ingredientType = Mockito.mock(IngredientType.class);
 
     public BurgerTest (float bunPrice, float ingredientPrice, float ingredient2Price, float ingredient3Price, float burgerPrice)  {
         this.bunPrice = bunPrice;
@@ -94,6 +95,17 @@ public class BurgerTest {
         Assert.assertTrue(burger.getReceipt().contains("sausage"));
         Assert.assertTrue(burger.getReceipt().contains("700,00"));
 
+    }
+
+    @Test
+    public void moveIngredientChangeLayerIngredientInBurger() {
+        Burger burger = new Burger();
+        Mockito.when(ingredient.getName()).thenReturn("chili sauce");
+        burger.addIngredient(ingredient);
+        burger.addIngredient(ingredient2);
+        burger.moveIngredient(0,1);
+        Assert.assertTrue(burger.ingredients.size() == 2);
+        Assert.assertEquals("chili sauce", burger.ingredients.get(1).getName());
     }
 
 }
